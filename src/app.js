@@ -67,8 +67,6 @@ ajax (
     
     //Add an action for SELECT
     resultsMenu.on('select', function(e) {
-      // Test
-      console.log('Item number ' + e.itemIndex + ' was pressed!');
       // Get the stream
       var stream = data.streams[e.itemIndex];
       
@@ -80,9 +78,7 @@ ajax (
       
       // Calculate Uptime
       var startDate = Date.parse(stream.created_at);
-      console.log('Start ' + startDate);
       var currentDate = Date.now();
-      console.log('Now: ' + currentDate);
       var diff = Math.abs(currentDate - startDate);
       
       // calculate hours
@@ -117,9 +113,6 @@ ajax (
 
     // Register for 'tap' events
     resultsMenu.on('accelTap', function(e) {
-      // For teting purposes
-      console.log('TAP!');
-      console.log('axis: ' + e.axis + ', direction:' + e.direction);
       // Make request to Twitch.tv
       ajax(
         {
@@ -149,9 +142,3 @@ ajax (
 
 // Initialize the accelerometer
 Accel.init();
-
-
-
-
-
-
