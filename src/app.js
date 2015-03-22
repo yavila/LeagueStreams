@@ -20,10 +20,10 @@ var text = new UI.Text({
   size: new Vector2(144, 168),
   text: 'Downloading streamer data...',
   font:'GOTHIC_28_BOLD',
-  color:'black',
+  color:'white',
   textOverflow:'wrap',
   textAlign:'center',
-  backgroundColor:'white'
+  backgroundColor:'black'
 });
 
 // Add to splashWindow and show
@@ -74,24 +74,25 @@ ajax (
       var content = data.streams[e.itemIndex].channel.status;
       
       // Add Number of viewers
-      content += '\nViewers: ' + stream.viewers;
+      content += '\n\nViewers: ' + stream.viewers;
       
       // Calculate Uptime
-      var startDate = Date.parse(stream.created_at);
-      var currentDate = Date.now();
-      var diff = Math.abs(currentDate - startDate);
+//       var startDate = Date.parse(stream.created_at);
+//       var currentDate = Date.now();
+//       var diff = Math.abs(currentDate - startDate);
       
       // calculate hours
-      var time = Math.floor(diff / 3600) % 24;
-      diff -= time * 3600;
-      //Add uptime 
-      if (time === 0) { //Check to make sure this works
-        time = Math.floor(diff / 60) % 60;
-        diff -= time * 60;
-        content += '\nUptime: ' + time + ' minutes';
-      } else {
-        content += '\nUptime: ' + time + ' hours';  
-      }
+//       var time = Math.floor(diff / 3600) % 24;
+//       content += '\nUptime: ' + time + 'hours';
+//       diff -= time * 3600;
+//       //Add uptime 
+//       if (time === 0) { //Check to make sure this works
+//         time = Math.floor(diff / 60) % 60;
+//         diff -= time * 60;
+//         content += '\nUptime: ' + time + ' minutes';
+//       } else {
+//         content += '\nUptime: ' + time + ' hours';  
+//       }
       
       //Add Number of followers
       content += '\nFollowers: ' + stream.channel.followers;
@@ -100,7 +101,8 @@ ajax (
       var detailCard = new UI.Card({
         title:stream.channel.display_name,
         body: content,
-        scrollable: true
+        scrollable: true,
+        style: 'small'
       });
       detailCard.show();
     });
